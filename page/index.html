@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>zzc-ui</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="content-box">
+        <ul class="content-list">
+            <li data-id="Button" class="active">Button</li>
+        </ul>
+        <div class="content-right">
+
+            <div class="phone">
+                <div class="phone-top">
+                    <img src="./phone-top.png"/>
+                    <div class="url">巴啦啦日你妈</div>
+                </div>
+                <iframe id="phoneIframe" src="../demo/Button/demo.html"></iframe>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    var ul = document.querySelector( '.content-list' );
+
+    ul.addEventListener( 'click', function ( e ) {
+        var lis = document.querySelectorAll( '.content-list li' );
+        for ( var i = 0; i < lis.length; i++ ) {
+            lis[ i ].className = '';
+        }
+        e.target.className = 'active';
+
+        var iframe = document.getElementById('phoneIframe'),
+            demoType = e.target.getAttribute('data-id');
+        iframe.setAttribute('src','../demo/'+demoType+'/demo.html');
+    } )
+</script>
+
+</html>
