@@ -30,6 +30,9 @@
     var ul = document.querySelector( '.content-list' );
 
     ul.addEventListener( 'click', function ( e ) {
+        if(e.target.targetName != 'LI'){
+            return false;
+        }
         var lis = document.querySelectorAll( '.content-list li' );
         for ( var i = 0; i < lis.length; i++ ) {
             lis[ i ].className = '';
