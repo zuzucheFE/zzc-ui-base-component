@@ -1,0 +1,228 @@
+@import '../base/base.scss';
+
+
+//按钮active颜色
+$main_active: #3e63b0;
+$main-lh_active: #6b88cc;
+$main-dk_active: #1d3fa2;
+$sub_active: #c30144;
+$sub-lh_active: #cc4868;
+$sub-dk_active: #a30028;
+$default_active: #cccccc;
+
+
+//按钮active
+@mixin btnActive($color: #fff) {
+    &:active {
+        background: $color!important;
+    }
+}
+
+//按钮基本样式
+@mixin btnBase() {
+    margin-bottom: 0;
+    font-size: $fs22rem;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    box-sizing: border-box;
+    font-weight: 400;
+    display: inline-block;
+    transition: background .1s;
+}
+
+//按钮默认尺寸
+@mixin btnDefaultSize() {
+    height: .88rem;
+    line-height: .88rem;
+    font-size: $fs32rem;
+}
+
+//按钮尺寸
+@mixin btnSize() {
+    @include btnDefaultSize();
+    &#{$uiName}-btn-lg {
+        height: 1rem;
+        line-height: 1rem;
+        font-size: $fs32rem;
+    }
+    &#{$uiName}-btn-ms {
+        height: .7rem;
+        line-height: .7rem;
+        font-size: $fs32rem;
+    }
+    &#{$uiName}-btn-xs {
+        height: .6rem;
+        line-height: .6rem;
+        font-size: $fs28rem;
+    }
+}
+
+//按钮颜色
+@mixin btnColor() {
+    &#{$uiName}-btn-default {
+        background: $c_fff;
+        color: $c_333;
+        @include halfPXBorder(#333, .16rem);
+        @include btnActive($default_active);
+    }
+    &#{$uiName}-btn-main {
+        background: $main;
+        color: $c_fff;
+        @include btnActive($main_active);
+    }
+    &#{$uiName}-btn-main-lh {
+        background: $main_lh;
+        color: $c_fff;
+        @include btnActive($main-lh_active);
+    }
+    &#{$uiName}-btn-main-dk {
+        background: $main_dk;
+        color: $c_fff;
+        @include btnActive($main-dk_active);
+    }
+    &#{$uiName}-btn-sub {
+        background: $sub;
+        color: $c_fff;
+        @include btnActive($sub_active);
+    }
+    &#{$uiName}-btn-sub-lh {
+        background: $sub_lh;
+        color: $c_fff;
+        @include btnActive($sub-lh_active);
+    }
+    &#{$uiName}-btn-sub-dk {
+        background: $sub_dk;
+        color: $c_fff;
+        @include btnActive($sub-dk_active);
+    }
+    
+}
+
+//空心按钮
+@mixin hollowBtn() {
+    &#{$uiName}-btn-hollow {
+        &#{$uiName}-btn {
+            background: $c_fff;
+        }
+        &#{$uiName}-btn-main {
+            color: $main;
+            @include btnActive($default_active);
+            @include halfPXBorder($main, .16rem);
+        }
+        &#{$uiName}-btn-main-lh {
+            color: $main_lh;
+            @include btnActive($default_active);
+            @include halfPXBorder($main_lh, .16rem);
+        }
+        &#{$uiName}-btn-main-dk {
+            color: $main_dk;
+            @include btnActive($default_active);
+            @include halfPXBorder($main_dk, .16rem);
+        }
+        &#{$uiName}-btn-sub {
+            color: $sub;
+            @include btnActive($default_active);
+            @include halfPXBorder($sub, .16rem);
+        }
+        &#{$uiName}-btn-sub-lh {
+            color: $sub_lh;
+            @include btnActive($default_active);
+            @include halfPXBorder($sub_lh, .16rem);
+        }
+        &#{$uiName}-btn-sub-dk {
+            color: $sub_dk;
+            @include btnActive($default_active);
+            @include halfPXBorder($sub_dk, .16rem);
+        }
+    }
+}
+
+//按钮样式
+@mixin btnStyle() {
+    //占满的按钮
+    &#{$uiName}-btn-full {
+        width: 100%;
+        font-size: $fs32rem;
+        @include btnDefaultSize(); //full情况下，默认样式没有圆角
+        &#{$uiName}-btn-default {
+            background: $c_fff;
+            color: $c_333;
+            @include halfPXBorder();
+        }
+    } //没有圆角的按钮
+    &#{$uiName}-btn-no-radius {
+        @include borderRadius(0);
+    }
+}
+
+//栅格化布局列排列
+@mixin btnViewportRow() {
+    //2列布局
+    #{$uiName}-btn-row-2 {
+        width: 50%;
+        -webkit-box-flex: 1;
+        &:not(:first-child) {
+            margin-left: .3rem;
+        }
+    } //3列布局
+    #{$uiName}-btn-row-3 {
+        width: 33%;
+        -webkit-box-flex: 1;
+        &:not(:first-child) {
+            margin-left: .25rem;
+        }
+    } //4列布局
+    #{$uiName}-btn-row-4 {
+        width: 25%;
+        -webkit-box-flex: 1;
+        &:not(:first-child) {
+            margin-left: .2rem;
+        }
+    }
+}
+
+//文字排版方向
+@mixin btnTextDirection() {
+    &#{$uiName}-btn-direction-left{
+        text-align: left;
+    }
+    &#{$uiName}-btn-direction-right{
+        text-align: right;
+    }
+}
+
+//按钮块
+#{$uiName}-btn-box {
+    padding: .2rem .3rem;
+    display: block; //在box里面的btn默认有圆角
+    #{$uiName}-btn {
+        width: 100%;
+        @include borderRadius(.08rem);
+    } //按钮组
+    #{$uiName}-btn-group {
+        @include -webkit-box(center, justify);
+        @include btnViewportRow();
+        #{$uiName}-btn {
+            display: block;
+        }
+    }
+}
+
+//按钮class
+#{$uiName}-btn {
+    @include btnBase();
+    @include btnSize();
+    @include btnColor();
+    @include btnStyle();
+    @include hollowBtn();
+    @include btnTextDirection();
+}

@@ -1,0 +1,33 @@
+//半像素边框
+@mixin halfPXBorder ($borderColor:#333, $borderRadius:0, $borderWidth:1px, $borderStyle:solid) {
+    position: relative;
+    &::after {
+        border-radius: $borderRadius;
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200%;
+        height: 200%;
+        border: $borderWidth $borderStyle $borderColor;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: scale(0.5, 0.5);
+        transform: scale(0.5, 0.5);
+        box-sizing: border-box;
+        background: transparent;
+    }
+}
+
+//居中
+@mixin -webkit-box($align:center, $pack:center) {
+    display: -webkit-box;
+    -webkit-box-align: $align;
+    -webkit-box-pack: $pack;
+}
+
+//设置边框圆角
+@mixin borderRadius($borderRadius:0) {
+    border-radius: $borderRadius;
+    -webkit-border-radius: $borderRadius;
+}

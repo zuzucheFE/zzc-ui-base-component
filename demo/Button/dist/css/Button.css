@@ -1,0 +1,337 @@
+@charset "UTF-8";
+/**
+  * Created by Robin Hsu on 16/6/24.
+  * 统一浏览器样式，请不要将无关的代码放到这里
+  * 只要不是相关功能代码，写在这里即使上线也一律回退
+  * Last edited by Robin Hsu on 16/8/5.
+  */
+* {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -user-select: none; }
+
+html, body, div, h1, h2, h3, h4, h5, span, p, em, img, dl, dt, dd, ol, ul, li, form, label, nav, footer, header, section, time, button, input, select, textarea {
+  border: 0 none;
+  margin: 0;
+  padding: 0; }
+
+h1, h2, h3, h4 {
+  font-weight: normal; }
+
+input, textarea {
+  border-radius: 0;
+  outline: medium none;
+  -webkit-user-select: auto;
+  user-select: auto; }
+
+input:disabled, textarea:disabled {
+  opacity: 1; }
+
+button, input, select, textarea {
+  resize: none; }
+
+s, i, em, b, strong {
+  font-style: normal;
+  text-decoration: none; }
+
+img {
+  border: none; }
+
+ul, ol {
+  list-style: outside none none; }
+
+li {
+  list-style: none outside none; }
+
+button {
+  background: transparent;
+  outline: 0; }
+
+.zzc-btn-box {
+  padding: .2rem .3rem;
+  display: block; }
+  .zzc-btn-box .zzc-btn {
+    width: 100%;
+    border-radius: 0.08rem;
+    -webkit-border-radius: 0.08rem; }
+  .zzc-btn-box .zzc-btn-group {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: justify; }
+    .zzc-btn-box .zzc-btn-group .zzc-btn-row-2 {
+      width: 50%;
+      -webkit-box-flex: 1; }
+      .zzc-btn-box .zzc-btn-group .zzc-btn-row-2:not(:first-child) {
+        margin-left: .3rem; }
+    .zzc-btn-box .zzc-btn-group .zzc-btn-row-3 {
+      width: 33%;
+      -webkit-box-flex: 1; }
+      .zzc-btn-box .zzc-btn-group .zzc-btn-row-3:not(:first-child) {
+        margin-left: .25rem; }
+    .zzc-btn-box .zzc-btn-group .zzc-btn-row-4 {
+      width: 25%;
+      -webkit-box-flex: 1; }
+      .zzc-btn-box .zzc-btn-group .zzc-btn-row-4:not(:first-child) {
+        margin-left: .2rem; }
+    .zzc-btn-box .zzc-btn-group .zzc-btn {
+      display: block; }
+
+.zzc-btn {
+  margin-bottom: 0;
+  font-size: 0.22rem;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  box-sizing: border-box;
+  font-weight: 400;
+  display: inline-block;
+  transition: background .1s;
+  height: .88rem;
+  line-height: .88rem;
+  font-size: 0.32rem; }
+  .zzc-btn.zzc-btn-lg {
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 0.32rem; }
+  .zzc-btn.zzc-btn-ms {
+    height: .7rem;
+    line-height: .7rem;
+    font-size: 0.32rem; }
+  .zzc-btn.zzc-btn-xs {
+    height: .6rem;
+    line-height: .6rem;
+    font-size: 0.28rem; }
+  .zzc-btn.zzc-btn-default {
+    background: #fff;
+    color: #333;
+    position: relative; }
+    .zzc-btn.zzc-btn-default::after {
+      border-radius: 0.16rem;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200%;
+      height: 200%;
+      border: 1px solid #333;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: scale(0.5, 0.5);
+      transform: scale(0.5, 0.5);
+      box-sizing: border-box;
+      background: transparent; }
+    .zzc-btn.zzc-btn-default:active {
+      background: #cccccc !important; }
+  .zzc-btn.zzc-btn-main {
+    background: #4E7CDD;
+    color: #fff; }
+    .zzc-btn.zzc-btn-main:active {
+      background: #3e63b0 !important; }
+  .zzc-btn.zzc-btn-main-lh {
+    background: #86ABFF;
+    color: #fff; }
+    .zzc-btn.zzc-btn-main-lh:active {
+      background: #6b88cc !important; }
+  .zzc-btn.zzc-btn-main-dk {
+    background: #254FCB;
+    color: #fff; }
+    .zzc-btn.zzc-btn-main-dk:active {
+      background: #1d3fa2 !important; }
+  .zzc-btn.zzc-btn-sub {
+    background: #F40256;
+    color: #fff; }
+    .zzc-btn.zzc-btn-sub:active {
+      background: #c30144 !important; }
+  .zzc-btn.zzc-btn-sub-lh {
+    background: #FF5A82;
+    color: #fff; }
+    .zzc-btn.zzc-btn-sub-lh:active {
+      background: #cc4868 !important; }
+  .zzc-btn.zzc-btn-sub-dk {
+    background: #CC0033;
+    color: #fff; }
+    .zzc-btn.zzc-btn-sub-dk:active {
+      background: #a30028 !important; }
+  .zzc-btn.zzc-btn-full {
+    width: 100%;
+    font-size: 0.32rem;
+    height: .88rem;
+    line-height: .88rem;
+    font-size: 0.32rem; }
+    .zzc-btn.zzc-btn-full.zzc-btn-default {
+      background: #fff;
+      color: #333;
+      position: relative; }
+      .zzc-btn.zzc-btn-full.zzc-btn-default::after {
+        border-radius: 0;
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200%;
+        height: 200%;
+        border: 1px solid #333;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: scale(0.5, 0.5);
+        transform: scale(0.5, 0.5);
+        box-sizing: border-box;
+        background: transparent; }
+  .zzc-btn.zzc-btn-no-radius {
+    border-radius: 0;
+    -webkit-border-radius: 0; }
+  .zzc-btn.zzc-btn-hollow.zzc-btn {
+    background: #fff; }
+  .zzc-btn.zzc-btn-hollow.zzc-btn-main {
+    color: #4E7CDD;
+    position: relative; }
+    .zzc-btn.zzc-btn-hollow.zzc-btn-main:active {
+      background: #cccccc !important; }
+    .zzc-btn.zzc-btn-hollow.zzc-btn-main::after {
+      border-radius: 0.16rem;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200%;
+      height: 200%;
+      border: 1px solid #4E7CDD;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: scale(0.5, 0.5);
+      transform: scale(0.5, 0.5);
+      box-sizing: border-box;
+      background: transparent; }
+  .zzc-btn.zzc-btn-hollow.zzc-btn-main-lh {
+    color: #86ABFF;
+    position: relative; }
+    .zzc-btn.zzc-btn-hollow.zzc-btn-main-lh:active {
+      background: #cccccc !important; }
+    .zzc-btn.zzc-btn-hollow.zzc-btn-main-lh::after {
+      border-radius: 0.16rem;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200%;
+      height: 200%;
+      border: 1px solid #86ABFF;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: scale(0.5, 0.5);
+      transform: scale(0.5, 0.5);
+      box-sizing: border-box;
+      background: transparent; }
+  .zzc-btn.zzc-btn-hollow.zzc-btn-main-dk {
+    color: #254FCB;
+    position: relative; }
+    .zzc-btn.zzc-btn-hollow.zzc-btn-main-dk:active {
+      background: #cccccc !important; }
+    .zzc-btn.zzc-btn-hollow.zzc-btn-main-dk::after {
+      border-radius: 0.16rem;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200%;
+      height: 200%;
+      border: 1px solid #254FCB;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: scale(0.5, 0.5);
+      transform: scale(0.5, 0.5);
+      box-sizing: border-box;
+      background: transparent; }
+  .zzc-btn.zzc-btn-hollow.zzc-btn-sub {
+    color: #F40256;
+    position: relative; }
+    .zzc-btn.zzc-btn-hollow.zzc-btn-sub:active {
+      background: #cccccc !important; }
+    .zzc-btn.zzc-btn-hollow.zzc-btn-sub::after {
+      border-radius: 0.16rem;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200%;
+      height: 200%;
+      border: 1px solid #F40256;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: scale(0.5, 0.5);
+      transform: scale(0.5, 0.5);
+      box-sizing: border-box;
+      background: transparent; }
+  .zzc-btn.zzc-btn-hollow.zzc-btn-sub-lh {
+    color: #FF5A82;
+    position: relative; }
+    .zzc-btn.zzc-btn-hollow.zzc-btn-sub-lh:active {
+      background: #cccccc !important; }
+    .zzc-btn.zzc-btn-hollow.zzc-btn-sub-lh::after {
+      border-radius: 0.16rem;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200%;
+      height: 200%;
+      border: 1px solid #FF5A82;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: scale(0.5, 0.5);
+      transform: scale(0.5, 0.5);
+      box-sizing: border-box;
+      background: transparent; }
+  .zzc-btn.zzc-btn-hollow.zzc-btn-sub-dk {
+    color: #CC0033;
+    position: relative; }
+    .zzc-btn.zzc-btn-hollow.zzc-btn-sub-dk:active {
+      background: #cccccc !important; }
+    .zzc-btn.zzc-btn-hollow.zzc-btn-sub-dk::after {
+      border-radius: 0.16rem;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200%;
+      height: 200%;
+      border: 1px solid #CC0033;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: scale(0.5, 0.5);
+      transform: scale(0.5, 0.5);
+      box-sizing: border-box;
+      background: transparent; }
+  .zzc-btn.zzc-btn-direction-left {
+    text-align: left; }
+  .zzc-btn.zzc-btn-direction-right {
+    text-align: right; }
+#root .item h5 {
+  padding: .3rem .3rem;
+  font-size: .36rem; }
+
+#root .item .explain {
+  padding: 0 .3rem;
+  font-size: .32rem;
+  color: #333; }
+
+#root .item .sub-explain {
+  padding: .2rem .3rem;
+  font-size: .28rem;
+  color: #666; }
+
+#root .item .margin-top {
+  margin-top: .1rem; }
+
+/*# sourceMappingURL=Button.css.map*/
