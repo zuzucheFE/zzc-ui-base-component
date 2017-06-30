@@ -124,8 +124,6 @@ button {
       border: 1px solid #4E7CDD; }
       .zzc-btn.zzc-btn-main.zzc-btn-background-ghost:active {
         background: #edf1fb !important; }
-      .zzc-btn.zzc-btn-main.zzc-btn-background-ghost:active {
-        background: #cccccc !important; }
       .zzc-btn.zzc-btn-main.zzc-btn-background-ghost.zzc-btn-xs {
         border: none;
         position: relative; }
@@ -162,8 +160,6 @@ button {
       border: 1px solid #86ABFF; }
       .zzc-btn.zzc-btn-main-lh.zzc-btn-background-ghost:active {
         background: #f2f6ff !important; }
-      .zzc-btn.zzc-btn-main-lh.zzc-btn-background-ghost:active {
-        background: #cccccc !important; }
       .zzc-btn.zzc-btn-main-lh.zzc-btn-background-ghost.zzc-btn-xs {
         border: none;
         position: relative; }
@@ -200,8 +196,6 @@ button {
       border: 1px solid #254FCB; }
       .zzc-btn.zzc-btn-main-dk.zzc-btn-background-ghost:active {
         background: #e9edf9 !important; }
-      .zzc-btn.zzc-btn-main-dk.zzc-btn-background-ghost:active {
-        background: #cccccc !important; }
       .zzc-btn.zzc-btn-main-dk.zzc-btn-background-ghost.zzc-btn-xs {
         border: none;
         position: relative; }

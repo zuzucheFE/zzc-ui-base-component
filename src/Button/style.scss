@@ -199,7 +199,7 @@ $sub_dk_ghost_active: #f9e5ea;
         @else if($color == $main_dk){
             @include btnActive($main_dk_ghost_active);
         }
-        @if($color==$sub) {
+        @else if($color==$sub) {
             @include btnActive($sub_ghost_active);
         }
         @else if($color == $sub_lh){
