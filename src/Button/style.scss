@@ -7,6 +7,13 @@ $sub_active: #c30144;
 $sub-lh_active: #cc4868;
 $sub-dk_active: #a30028;
 $default_active: #cccccc;
+//空心带颜色按钮的active状态
+$main_ghost_active: #edf1fb;
+$main_lh_ghost_active: #f2f6ff;
+$main_dk_ghost_active: #e9edf9;
+$sub_ghost_active: #fde5ee;
+$sub_lh_ghost_active: #ffeef2;
+$sub_dk_ghost_active: #f9e5ea;
 //按钮active
 @mixin btnActive($color: #fff) {
     &:active {
@@ -183,7 +190,27 @@ $default_active: #cccccc;
     &#{$uiName}-btn-background-ghost {
         background: $c_fff;
         color: $color;
-        @include btnActive($default_active);
+        @if($color==$main) {
+            @include btnActive($main_ghost_active);
+        }
+        @else if($color == $main_lh){
+            @include btnActive($main_lh_ghost_active);
+        }
+        @else if($color == $main_dk){
+            @include btnActive($main_dk_ghost_active);
+        }
+        @if($color==$sub) {
+            @include btnActive($sub_ghost_active);
+        }
+        @else if($color == $sub_lh){
+            @include btnActive($sub_lh_ghost_active);
+        }
+        @else if($color == $sub_dk){
+            @include btnActive($sub_dk_ghost_active);
+        }
+        @else {
+            @include btnActive($default_active);
+        }
         @include pxBorder($color, .16rem);
         &#{$uiName}-btn-xs {
             @include halfPXBorder($color, .16rem);

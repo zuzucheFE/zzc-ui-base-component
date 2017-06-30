@@ -123,6 +123,8 @@ button {
       color: #4E7CDD;
       border: 1px solid #4E7CDD; }
       .zzc-btn.zzc-btn-main.zzc-btn-background-ghost:active {
+        background: #edf1fb !important; }
+      .zzc-btn.zzc-btn-main.zzc-btn-background-ghost:active {
         background: #cccccc !important; }
       .zzc-btn.zzc-btn-main.zzc-btn-background-ghost.zzc-btn-xs {
         border: none;
@@ -158,6 +160,8 @@ button {
       background: #fff;
       color: #86ABFF;
       border: 1px solid #86ABFF; }
+      .zzc-btn.zzc-btn-main-lh.zzc-btn-background-ghost:active {
+        background: #f2f6ff !important; }
       .zzc-btn.zzc-btn-main-lh.zzc-btn-background-ghost:active {
         background: #cccccc !important; }
       .zzc-btn.zzc-btn-main-lh.zzc-btn-background-ghost.zzc-btn-xs {
@@ -195,6 +199,8 @@ button {
       color: #254FCB;
       border: 1px solid #254FCB; }
       .zzc-btn.zzc-btn-main-dk.zzc-btn-background-ghost:active {
+        background: #e9edf9 !important; }
+      .zzc-btn.zzc-btn-main-dk.zzc-btn-background-ghost:active {
         background: #cccccc !important; }
       .zzc-btn.zzc-btn-main-dk.zzc-btn-background-ghost.zzc-btn-xs {
         border: none;
@@ -231,7 +237,7 @@ button {
       color: #F40256;
       border: 1px solid #F40256; }
       .zzc-btn.zzc-btn-sub.zzc-btn-background-ghost:active {
-        background: #cccccc !important; }
+        background: #fde5ee !important; }
       .zzc-btn.zzc-btn-sub.zzc-btn-background-ghost.zzc-btn-xs {
         border: none;
         position: relative; }
@@ -267,7 +273,7 @@ button {
       color: #FF5A82;
       border: 1px solid #FF5A82; }
       .zzc-btn.zzc-btn-sub-lh.zzc-btn-background-ghost:active {
-        background: #cccccc !important; }
+        background: #ffeef2 !important; }
       .zzc-btn.zzc-btn-sub-lh.zzc-btn-background-ghost.zzc-btn-xs {
         border: none;
         position: relative; }
@@ -303,7 +309,7 @@ button {
       color: #CC0033;
       border: 1px solid #CC0033; }
       .zzc-btn.zzc-btn-sub-dk.zzc-btn-background-ghost:active {
-        background: #cccccc !important; }
+        background: #f9e5ea !important; }
       .zzc-btn.zzc-btn-sub-dk.zzc-btn-background-ghost.zzc-btn-xs {
         border: none;
         position: relative; }
