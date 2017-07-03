@@ -14,6 +14,10 @@ $main_dk_ghost_active: #e9edf9;
 $sub_ghost_active: #fde5ee;
 $sub_lh_ghost_active: #ffeef2;
 $sub_dk_ghost_active: #f9e5ea;
+
+//默认按钮的边框颜色
+$default_border_color: #ccc;
+
 //按钮active
 @mixin btnActive($color: #fff) {
     &:active {
@@ -44,7 +48,7 @@ $sub_dk_ghost_active: #f9e5ea;
     border-radius: .08rem; //默认样式
     background: $c_fff;
     color: $c_333;
-    @include halfPXBorder(#333, .16rem);
+    @include halfPXBorder($default_border_color, .16rem);
     @include btnActive($default_active);
 }
 
@@ -211,7 +215,9 @@ $sub_dk_ghost_active: #f9e5ea;
         @else {
             @include btnActive($default_active);
         }
+        //其他按钮用1px做边框
         @include pxBorder($color, .16rem);
+        //xs尺寸用半像素做边框
         &#{$uiName}-btn-xs {
             @include halfPXBorder($color, .16rem);
         }
@@ -244,7 +250,7 @@ $sub_dk_ghost_active: #f9e5ea;
 #{$uiName}-btn-full {
     @include btnBase();
     @include btnColor('full');
-    @include halfPXBorder(#333, 0);
+    @include halfPXBorder($default_border_color, 0);
     width: 100%;
     border-radius: 0;
     display: block;
