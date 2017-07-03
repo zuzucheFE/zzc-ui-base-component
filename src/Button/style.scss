@@ -250,6 +250,7 @@ $default_border_color: #ccc;
 #{$uiName}-btn-full {
     @include btnBase();
     @include btnColor('full');
+    @include disabled();
     @include halfPXBorder($default_border_color, 0);
     width: 100%;
     border-radius: 0;

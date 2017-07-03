@@ -432,6 +432,10 @@ button {
       background: #a30028 !important; }
     .zzc-btn-full.zzc-btn-sub-dk::after {
       display: none; }
+  .zzc-btn-full.zzc-btn-disabled {
+    opacity: .5;
+    pointer-events: none;
+    cursor: not-allowed; }
   .zzc-btn-full::after {
     display: block;
     border-radius: 0;
