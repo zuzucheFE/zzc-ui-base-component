@@ -1,6 +1,7 @@
 const path = require( 'path' );
 const ExtractTextPlugin = require( "extract-text-webpack-plugin" );
 const webpack = require( 'webpack' );
+const process = require( 'process' );
 
 const extractSass = new ExtractTextPlugin( {
     filename: "[name]/dist/css/[name].css",
@@ -15,6 +16,14 @@ module.exports = {
     output: {
         path: path.resolve( __dirname ),
         filename: "[name]/dist/js/[name].js"
+    },
+
+    devServer: {
+        contentBase: path.join( __dirname ),
+        publicPath: "/Button/",
+        compress: true,
+        port: 9000,
+        inline:true
     },
 
     module: {
@@ -65,4 +74,6 @@ module.exports = {
             )
         }
     },
+
+    
 }
