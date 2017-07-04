@@ -40,6 +40,16 @@ module.exports = {
                     // use style-loader in development
                     fallback: "style-loader"
                 } )
+            },
+            {
+                test: /\.css$/,
+                use: extractSass.extract( {
+                    use: [{
+                        loader: "css-loader"
+                    }],
+                    // use style-loader in development
+                    fallback: "style-loader"
+                } )
             }
         ]
     },
@@ -51,7 +61,7 @@ module.exports = {
         alias: {
             "zzc-base-component": path.resolve(
                 __dirname,
-                "../src/"
+                "../dist/"
             )
         }
     },
