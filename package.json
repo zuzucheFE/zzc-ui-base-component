@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "demo": "webpack -w --config ./demo/webpack.config.js",
-    "server": "webpack-dev-server --config ./demo/webpack.config.js --inline server",
+    "server": "webpack-dev-server --config ./demo/webpack.config.js --inline",
     "compile": "gulp compile",
     "watch": "gulp watch"
   },
