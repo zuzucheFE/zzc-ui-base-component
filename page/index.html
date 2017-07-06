@@ -20,7 +20,7 @@
                     <img src="./phone-top.png"/>
                     <div class="url">巴啦啦日你妈</div>
                 </div>
-                <iframe id="phoneIframe" src="./demo/Button/demo.html"></iframe>
+                <iframe id="phoneIframe" src="../demo/Button/index.html"></iframe>
             </div>
 
         </div>
@@ -41,7 +41,9 @@
 
         var iframe = document.getElementById('phoneIframe'),
             demoType = e.target.getAttribute('data-id');
-        iframe.setAttribute('src','../demo/'+demoType+'/demo.html');
+            console.log(demoType);
+            
+        iframe.setAttribute('src','../demo/'+demoType+'/index.html');
     } )
 </script>
 
