@@ -1,16 +1,33 @@
 {
   "name": "zzc-base-component",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "zzc-ui基础组件库",
+  "main": "./dist/index.js",
   "scripts": {
     "demo": "webpack -w --config ./demo/webpack.config.js",
     "server": "webpack-dev-server --config ./demo/webpack.config.js --inline",
     "compile": "gulp compile",
     "watch": "gulp watch"
   },
-  "author": "",
+  "author": "LamHo",
   "license": "ISC",
+  "files": [
+    "src"
+  ],
+  "maintainers": [
+    {
+      "name": "LamHo",
+      "email": "linhao.4zhong@163.com"
+    }
+  ],
+  "keywords": [
+    "zzc",
+    "zzche",
+    "ui",
+    "css",
+    "base-component",
+    "conponent"
+  ],
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.0.0",
