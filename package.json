@@ -1,6 +1,6 @@
 {
   "name": "zzc-base-component",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "zzc-ui基础组件库",
   "main": "./dist/index.js",
   "scripts": {
