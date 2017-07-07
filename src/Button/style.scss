@@ -48,7 +48,7 @@ $default_border_color: #ccc;
     border-radius: .08rem; //默认样式
     background: $c_fff;
     color: $c_333;
-    @include halfPXBorder($default_border_color, .16rem);
+    @include pxBorder($default_border_color, .16rem);
     @include btnActive($default_active);
 }
 
@@ -72,6 +72,7 @@ $default_border_color: #ccc;
         height: .6rem;
         line-height: .6rem;
         font-size: $fs28rem;
+        @include halfPXBorder($default_border_color, .16rem);
     }
 }
 
@@ -251,7 +252,6 @@ $default_border_color: #ccc;
     @include btnBase();
     @include btnColor('full');
     @include disabled();
-    @include halfPXBorder($default_border_color, 0);
     width: 100%;
     border-radius: 0;
     display: block;

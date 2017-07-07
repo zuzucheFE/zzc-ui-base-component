@@ -72,27 +72,10 @@ button {
   border-radius: .08rem;
   background: #fff;
   color: #333;
-  border: none;
-  position: relative;
+  border: 1px solid #ccc;
   height: .88rem;
   line-height: .88rem;
   font-size: 0.32rem; }
-  .zzc-btn::after {
-    display: block;
-    border-radius: 0.16rem;
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 200%;
-    height: 200%;
-    border: 1px solid #ccc;
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-    -webkit-transform: scale(0.5, 0.5);
-    transform: scale(0.5, 0.5);
-    box-sizing: border-box;
-    background: transparent; }
   .zzc-btn:active {
     background: #cccccc !important; }
   .zzc-btn.zzc-btn-lg {
@@ -106,7 +89,25 @@ button {
   .zzc-btn.zzc-btn-xs {
     height: .6rem;
     line-height: .6rem;
-    font-size: 0.28rem; }
+    font-size: 0.28rem;
+    border: none;
+    position: relative; }
+    .zzc-btn.zzc-btn-xs::after {
+      display: block;
+      border-radius: 0.16rem;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200%;
+      height: 200%;
+      border: 1px solid #ccc;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: scale(0.5, 0.5);
+      transform: scale(0.5, 0.5);
+      box-sizing: border-box;
+      background: transparent; }
   .zzc-btn.zzc-btn-main {
     background: #4E7CDD;
     color: #fff; }
@@ -356,32 +357,13 @@ button {
   border-radius: .08rem;
   background: #fff;
   color: #333;
-  border: none;
-  position: relative;
-  border: none;
-  position: relative;
+  border: 1px solid #ccc;
   width: 100%;
   border-radius: 0;
   display: block;
   height: 1rem;
   line-height: 1rem;
   font-size: 0.32rem; }
-  .zzc-btn-full::after {
-    display: block;
-    border-radius: 0.16rem;
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 200%;
-    height: 200%;
-    border: 1px solid #ccc;
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-    -webkit-transform: scale(0.5, 0.5);
-    transform: scale(0.5, 0.5);
-    box-sizing: border-box;
-    background: transparent; }
   .zzc-btn-full:active {
     background: #cccccc !important; }
   .zzc-btn-full.zzc-btn-main {
@@ -436,19 +418,3 @@ button {
     opacity: .5;
     pointer-events: none;
     cursor: not-allowed; }
-  .zzc-btn-full::after {
-    display: block;
-    border-radius: 0;
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 200%;
-    height: 200%;
-    border: 1px solid #ccc;
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-    -webkit-transform: scale(0.5, 0.5);
-    transform: scale(0.5, 0.5);
-    box-sizing: border-box;
-    background: transparent; }
