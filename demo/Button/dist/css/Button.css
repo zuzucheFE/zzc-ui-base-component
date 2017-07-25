@@ -70,29 +70,12 @@ button {
   display: inline-block;
   transition: background .1s;
   border-radius: .08rem;
-  background: #fff;
+  background: transparent;
   color: #333;
-  border: none;
-  position: relative;
+  border: 1px solid #ccc;
   height: .88rem;
   line-height: .88rem;
   font-size: 0.32rem; }
-  .zzc-btn::after {
-    display: block;
-    border-radius: 0.16rem;
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 200%;
-    height: 200%;
-    border: 1px solid #ccc;
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-    -webkit-transform: scale(0.5, 0.5);
-    transform: scale(0.5, 0.5);
-    box-sizing: border-box;
-    background: transparent; }
   .zzc-btn:active {
     background: #cccccc !important; }
   .zzc-btn.zzc-btn-lg {
@@ -106,7 +89,25 @@ button {
   .zzc-btn.zzc-btn-xs {
     height: .6rem;
     line-height: .6rem;
-    font-size: 0.28rem; }
+    font-size: 0.28rem;
+    border: none;
+    position: relative; }
+    .zzc-btn.zzc-btn-xs::after {
+      display: block;
+      border-radius: 0.16rem;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200%;
+      height: 200%;
+      border: 1px solid #ccc;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: scale(0.5, 0.5);
+      transform: scale(0.5, 0.5);
+      box-sizing: border-box;
+      background: transparent; }
   .zzc-btn.zzc-btn-main {
     background: #4E7CDD;
     color: #fff; }
@@ -119,7 +120,7 @@ button {
     .zzc-btn.zzc-btn-main:active {
       background: #3e63b0 !important; }
     .zzc-btn.zzc-btn-main.zzc-btn-background-ghost {
-      background: #fff;
+      background: transparent;
       color: #4E7CDD;
       border: 1px solid #4E7CDD; }
       .zzc-btn.zzc-btn-main.zzc-btn-background-ghost:active {
@@ -155,7 +156,7 @@ button {
     .zzc-btn.zzc-btn-main-lh:active {
       background: #6b88cc !important; }
     .zzc-btn.zzc-btn-main-lh.zzc-btn-background-ghost {
-      background: #fff;
+      background: transparent;
       color: #86ABFF;
       border: 1px solid #86ABFF; }
       .zzc-btn.zzc-btn-main-lh.zzc-btn-background-ghost:active {
@@ -191,7 +192,7 @@ button {
     .zzc-btn.zzc-btn-main-dk:active {
       background: #1d3fa2 !important; }
     .zzc-btn.zzc-btn-main-dk.zzc-btn-background-ghost {
-      background: #fff;
+      background: transparent;
       color: #254FCB;
       border: 1px solid #254FCB; }
       .zzc-btn.zzc-btn-main-dk.zzc-btn-background-ghost:active {
@@ -227,7 +228,7 @@ button {
     .zzc-btn.zzc-btn-sub:active {
       background: #c30144 !important; }
     .zzc-btn.zzc-btn-sub.zzc-btn-background-ghost {
-      background: #fff;
+      background: transparent;
       color: #F40256;
       border: 1px solid #F40256; }
       .zzc-btn.zzc-btn-sub.zzc-btn-background-ghost:active {
@@ -263,7 +264,7 @@ button {
     .zzc-btn.zzc-btn-sub-lh:active {
       background: #cc4868 !important; }
     .zzc-btn.zzc-btn-sub-lh.zzc-btn-background-ghost {
-      background: #fff;
+      background: transparent;
       color: #FF5A82;
       border: 1px solid #FF5A82; }
       .zzc-btn.zzc-btn-sub-lh.zzc-btn-background-ghost:active {
@@ -299,7 +300,7 @@ button {
     .zzc-btn.zzc-btn-sub-dk:active {
       background: #a30028 !important; }
     .zzc-btn.zzc-btn-sub-dk.zzc-btn-background-ghost {
-      background: #fff;
+      background: transparent;
       color: #CC0033;
       border: 1px solid #CC0033; }
       .zzc-btn.zzc-btn-sub-dk.zzc-btn-background-ghost:active {
@@ -354,34 +355,15 @@ button {
   display: inline-block;
   transition: background .1s;
   border-radius: .08rem;
-  background: #fff;
+  background: transparent;
   color: #333;
-  border: none;
-  position: relative;
-  border: none;
-  position: relative;
+  border: 1px solid #ccc;
   width: 100%;
   border-radius: 0;
   display: block;
   height: 1rem;
   line-height: 1rem;
   font-size: 0.32rem; }
-  .zzc-btn-full::after {
-    display: block;
-    border-radius: 0.16rem;
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 200%;
-    height: 200%;
-    border: 1px solid #ccc;
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-    -webkit-transform: scale(0.5, 0.5);
-    transform: scale(0.5, 0.5);
-    box-sizing: border-box;
-    background: transparent; }
   .zzc-btn-full:active {
     background: #cccccc !important; }
   .zzc-btn-full.zzc-btn-main {
@@ -436,22 +418,6 @@ button {
     opacity: .5;
     pointer-events: none;
     cursor: not-allowed; }
-  .zzc-btn-full::after {
-    display: block;
-    border-radius: 0;
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 200%;
-    height: 200%;
-    border: 1px solid #ccc;
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-    -webkit-transform: scale(0.5, 0.5);
-    transform: scale(0.5, 0.5);
-    box-sizing: border-box;
-    background: transparent; }
 #root .item h5 {
   padding: .3rem .3rem;
   font-size: .36rem; }

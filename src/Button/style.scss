@@ -46,7 +46,7 @@ $default_border_color: #ccc;
     display: inline-block;
     transition: background .1s;
     border-radius: .08rem; //默认样式
-    background: $c_fff;
+    background: transparent;
     color: $c_333;
     @include pxBorder($default_border_color, .16rem);
     @include btnActive($default_active);
@@ -193,7 +193,7 @@ $default_border_color: #ccc;
 //空心按钮
 @mixin backgroundGhost($color) {
     &#{$uiName}-btn-background-ghost {
-        background: $c_fff;
+        background: transparent;
         color: $color;
         @if($color==$main) {
             @include btnActive($main_ghost_active);

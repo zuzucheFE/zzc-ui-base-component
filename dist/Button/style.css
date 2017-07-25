@@ -70,7 +70,7 @@ button {
   display: inline-block;
   transition: background .1s;
   border-radius: .08rem;
-  background: #fff;
+  background: transparent;
   color: #333;
   border: 1px solid #ccc;
   height: .88rem;
@@ -120,7 +120,7 @@ button {
     .zzc-btn.zzc-btn-main:active {
       background: #3e63b0 !important; }
     .zzc-btn.zzc-btn-main.zzc-btn-background-ghost {
-      background: #fff;
+      background: transparent;
       color: #4E7CDD;
       border: 1px solid #4E7CDD; }
       .zzc-btn.zzc-btn-main.zzc-btn-background-ghost:active {
@@ -156,7 +156,7 @@ button {
     .zzc-btn.zzc-btn-main-lh:active {
       background: #6b88cc !important; }
     .zzc-btn.zzc-btn-main-lh.zzc-btn-background-ghost {
-      background: #fff;
+      background: transparent;
       color: #86ABFF;
       border: 1px solid #86ABFF; }
       .zzc-btn.zzc-btn-main-lh.zzc-btn-background-ghost:active {
@@ -192,7 +192,7 @@ button {
     .zzc-btn.zzc-btn-main-dk:active {
       background: #1d3fa2 !important; }
     .zzc-btn.zzc-btn-main-dk.zzc-btn-background-ghost {
-      background: #fff;
+      background: transparent;
       color: #254FCB;
       border: 1px solid #254FCB; }
       .zzc-btn.zzc-btn-main-dk.zzc-btn-background-ghost:active {
@@ -228,7 +228,7 @@ button {
     .zzc-btn.zzc-btn-sub:active {
       background: #c30144 !important; }
     .zzc-btn.zzc-btn-sub.zzc-btn-background-ghost {
-      background: #fff;
+      background: transparent;
       color: #F40256;
       border: 1px solid #F40256; }
       .zzc-btn.zzc-btn-sub.zzc-btn-background-ghost:active {
@@ -264,7 +264,7 @@ button {
     .zzc-btn.zzc-btn-sub-lh:active {
       background: #cc4868 !important; }
     .zzc-btn.zzc-btn-sub-lh.zzc-btn-background-ghost {
-      background: #fff;
+      background: transparent;
       color: #FF5A82;
       border: 1px solid #FF5A82; }
       .zzc-btn.zzc-btn-sub-lh.zzc-btn-background-ghost:active {
@@ -300,7 +300,7 @@ button {
     .zzc-btn.zzc-btn-sub-dk:active {
       background: #a30028 !important; }
     .zzc-btn.zzc-btn-sub-dk.zzc-btn-background-ghost {
-      background: #fff;
+      background: transparent;
       color: #CC0033;
       border: 1px solid #CC0033; }
       .zzc-btn.zzc-btn-sub-dk.zzc-btn-background-ghost:active {
@@ -355,7 +355,7 @@ button {
   display: inline-block;
   transition: background .1s;
   border-radius: .08rem;
-  background: #fff;
+  background: transparent;
   color: #333;
   border: 1px solid #ccc;
   width: 100%;
