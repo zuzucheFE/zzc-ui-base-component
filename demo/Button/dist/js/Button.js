@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 88);
+/******/ 	return __webpack_require__(__webpack_require__.s = 90);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -631,7 +631,7 @@ module.exports = {
 ;(function () {
   // Detect the `define` function exposed by asynchronous module loaders. The
   // strict `define` check is necessary for compatibility with `r.js`.
-  var isLoader = "function" === "function" && __webpack_require__(86);
+  var isLoader = "function" === "function" && __webpack_require__(87);
 
   // A set of types used to distinguish objects from primitives.
   var objectTypes = {
@@ -1679,7 +1679,7 @@ module.exports = AjaxBasedTransport;
 
 
 /* global crypto:true */
-var crypto = __webpack_require__(76);
+var crypto = __webpack_require__(77);
 
 // This string has length 32, a power of 2, so the modulus doesn't introduce a
 // bias.
@@ -2870,7 +2870,7 @@ module.exports = AbstractXHRObject;
 
 var inherits = __webpack_require__(0)
   , AjaxBasedTransport = __webpack_require__(8)
-  , EventSourceReceiver = __webpack_require__(68)
+  , EventSourceReceiver = __webpack_require__(69)
   , XHRCorsObject = __webpack_require__(14)
   , EventSourceDriver = __webpack_require__(25)
   ;
@@ -2903,7 +2903,7 @@ module.exports = EventSourceTransport;
 
 
 var inherits = __webpack_require__(0)
-  , HtmlfileReceiver = __webpack_require__(69)
+  , HtmlfileReceiver = __webpack_require__(70)
   , XHRLocalObject = __webpack_require__(10)
   , AjaxBasedTransport = __webpack_require__(8)
   ;
@@ -3085,8 +3085,8 @@ module.exports = IframeTransport;
 
 var inherits = __webpack_require__(0)
   , urlUtils = __webpack_require__(5)
-  , BufferedSender = __webpack_require__(66)
-  , Polling = __webpack_require__(67)
+  , BufferedSender = __webpack_require__(67)
+  , Polling = __webpack_require__(68)
   ;
 
 var debug = function() {};
@@ -3212,7 +3212,7 @@ module.exports = XhrPollingTransport;
 /* 32 */
 /***/ (function(module, exports) {
 
-module.exports = '1.1.2';
+module.exports = '1.1.4';
 
 
 /***/ }),
@@ -3222,8 +3222,8 @@ module.exports = '1.1.2';
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
-var required = __webpack_require__(53)
-  , qs = __webpack_require__(81)
+var required = __webpack_require__(54)
+  , qs = __webpack_require__(82)
   , protocolre = /^([a-z][a-z0-9.+-]*:)?(\/\/)?([\S\s]*)/i
   , slashes = /^[A-Za-z][A-Za-z0-9+-.]*:\/\//;
 
@@ -3674,10 +3674,11 @@ __webpack_require__(43);
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(__resourceQuery) {/* global __resourceQuery WorkerGlobalScope */
-var url = __webpack_require__(82);
-var stripAnsi = __webpack_require__(80);
-var socket = __webpack_require__(85);
-var overlay = __webpack_require__(84);
+var url = __webpack_require__(83);
+var stripAnsi = __webpack_require__(81);
+var log = __webpack_require__(48)
+var socket = __webpack_require__(86);
+var overlay = __webpack_require__(85);
 
 function getCurrentScriptSource() {
 	// `document.currentScript` is the most accurate way to find the current script,
@@ -3707,18 +3708,16 @@ if(true) {
 var hot = false;
 var initial = true;
 var currentHash = "";
-var logLevel = "info";
 var useWarningOverlay = false;
 var useErrorOverlay = false;
 
-function log(level, msg) {
-	if(logLevel === "info" && level === "info")
-		return console.log(msg);
-	if(["info", "warning"].indexOf(logLevel) >= 0 && level === "warning")
-		return console.warn(msg);
-	if(["info", "warning", "error"].indexOf(logLevel) >= 0 && level === "error")
-		return console.error(msg);
-}
+var INFO = "info";
+var WARNING = "warning";
+var ERROR = "error";
+var NONE = "none";
+
+// Set the default log level
+log.setDefaultLevel(INFO);
 
 // Send messages to the outside, so plugins can consume it.
 function sendMsg(type, data) {
@@ -3737,27 +3736,44 @@ function sendMsg(type, data) {
 var onSocketMsg = {
 	hot: function() {
 		hot = true;
-		log("info", "[WDS] Hot Module Replacement enabled.");
+		log.info("[WDS] Hot Module Replacement enabled.");
 	},
 	invalid: function() {
-		log("info", "[WDS] App updated. Recompiling...");
+		log.info("[WDS] App updated. Recompiling...");
 		sendMsg("Invalid");
 	},
 	hash: function(hash) {
 		currentHash = hash;
 	},
 	"still-ok": function() {
-		log("info", "[WDS] Nothing changed.")
+		log.info("[WDS] Nothing changed.")
 		if(useWarningOverlay || useErrorOverlay) overlay.clear();
 		sendMsg("StillOk");
 	},
 	"log-level": function(level) {
-		logLevel = level;
+		var hotCtx = __webpack_require__(88);
+		if(hotCtx.keys().length > 0) {
+			hotCtx("./log").setLogLevel(level);
+		}
+		switch(level) {
+			case INFO:
+			case ERROR:
+				log.setLevel(level);
+				break;
+			case WARNING:
+				log.setLevel("warn"); // loglevel's warning name is different from webpack's
+				break;
+			case NONE:
+				log.disableAll();
+				break;
+			default:
+				log.error("[WDS] Unknown clientLogLevel '" + level + "'");
+		}
 	},
 	"overlay": function(overlay) {
 		if(typeof document !== "undefined") {
 			if(typeof(overlay) === "boolean") {
-				useWarningOverlay = overlay;
+				useWarningOverlay = false;
 				useErrorOverlay = overlay;
 			} else if(overlay) {
 				useWarningOverlay = overlay.warnings;
@@ -3772,37 +3788,37 @@ var onSocketMsg = {
 		reloadApp();
 	},
 	"content-changed": function() {
-		log("info", "[WDS] Content base changed. Reloading...")
+		log.info("[WDS] Content base changed. Reloading...")
 		self.location.reload();
 	},
 	warnings: function(warnings) {
-		log("info", "[WDS] Warnings while compiling.");
+		log.warn("[WDS] Warnings while compiling.");
 		var strippedWarnings = warnings.map(function(warning) {
 			return stripAnsi(warning);
 		});
 		sendMsg("Warnings", strippedWarnings);
 		for(var i = 0; i < strippedWarnings.length; i++)
-			log("warning", strippedWarnings[i]);
+			log.warn(strippedWarnings[i]);
 		if(useWarningOverlay) overlay.showMessage(warnings);
 
 		if(initial) return initial = false;
 		reloadApp();
 	},
 	errors: function(errors) {
-		log("info", "[WDS] Errors while compiling. Reload prevented.");
+		log.error("[WDS] Errors while compiling. Reload prevented.");
 		var strippedErrors = errors.map(function(error) {
 			return stripAnsi(error);
 		});
 		sendMsg("Errors", strippedErrors);
 		for(var i = 0; i < strippedErrors.length; i++)
-			log("error", strippedErrors[i]);
+			log.error(strippedErrors[i]);
 		if(useErrorOverlay) overlay.showMessage(errors);
 	},
 	error: function(error) {
-		console.error(error);
+		log.error(error);
 	},
 	close: function() {
-		log("error", "[WDS] Disconnected!");
+		log.error("[WDS] Disconnected!");
 		sendMsg("Close");
 	}
 };
@@ -3849,15 +3865,15 @@ function reloadApp() {
 		return;
 	}
 	if(hot) {
-		log("info", "[WDS] App hot update...");
-		var hotEmitter = __webpack_require__(87);
+		log.info("[WDS] App hot update...");
+		var hotEmitter = __webpack_require__(89);
 		hotEmitter.emit("webpackHotUpdate", currentHash);
 		if(typeof self !== "undefined" && self.window) {
 			// broadcast update to window
 			self.postMessage("webpackHotUpdate" + currentHash, "*");
 		}
 	} else {
-		log("info", "[WDS] App updated. Reloading...");
+		log.info("[WDS] App updated. Reloading...");
 		self.location.reload();
 	}
 }
@@ -4093,7 +4109,7 @@ exports.coerce = coerce;
 exports.disable = disable;
 exports.enable = enable;
 exports.enabled = enabled;
-exports.humanize = __webpack_require__(48);
+exports.humanize = __webpack_require__(49);
 
 /**
  * The currently active debug mode names, and names to skip.
@@ -4932,6 +4948,239 @@ module.exports = XmlEntities;
 
 /***/ }),
 /* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
+* loglevel - https://github.com/pimterry/loglevel
+*
+* Copyright (c) 2013 Tim Perry
+* Licensed under the MIT license.
+*/
+(function (root, definition) {
+    "use strict";
+    if (true) {
+        !(__WEBPACK_AMD_DEFINE_FACTORY__ = (definition),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+    } else if (typeof module === 'object' && module.exports) {
+        module.exports = definition();
+    } else {
+        root.log = definition();
+    }
+}(this, function () {
+    "use strict";
+    var noop = function() {};
+    var undefinedType = "undefined";
+
+    function realMethod(methodName) {
+        if (typeof console === undefinedType) {
+            return false; // We can't build a real method without a console to log to
+        } else if (console[methodName] !== undefined) {
+            return bindMethod(console, methodName);
+        } else if (console.log !== undefined) {
+            return bindMethod(console, 'log');
+        } else {
+            return noop;
+        }
+    }
+
+    function bindMethod(obj, methodName) {
+        var method = obj[methodName];
+        if (typeof method.bind === 'function') {
+            return method.bind(obj);
+        } else {
+            try {
+                return Function.prototype.bind.call(method, obj);
+            } catch (e) {
+                // Missing bind shim or IE8 + Modernizr, fallback to wrapping
+                return function() {
+                    return Function.prototype.apply.apply(method, [obj, arguments]);
+                };
+            }
+        }
+    }
+
+    // these private functions always need `this` to be set properly
+
+    function enableLoggingWhenConsoleArrives(methodName, level, loggerName) {
+        return function () {
+            if (typeof console !== undefinedType) {
+                replaceLoggingMethods.call(this, level, loggerName);
+                this[methodName].apply(this, arguments);
+            }
+        };
+    }
+
+    function replaceLoggingMethods(level, loggerName) {
+        /*jshint validthis:true */
+        for (var i = 0; i < logMethods.length; i++) {
+            var methodName = logMethods[i];
+            this[methodName] = (i < level) ?
+                noop :
+                this.methodFactory(methodName, level, loggerName);
+        }
+    }
+
+    function defaultMethodFactory(methodName, level, loggerName) {
+        /*jshint validthis:true */
+        return realMethod(methodName) ||
+               enableLoggingWhenConsoleArrives.apply(this, arguments);
+    }
+
+    var logMethods = [
+        "trace",
+        "debug",
+        "info",
+        "warn",
+        "error"
+    ];
+
+    function Logger(name, defaultLevel, factory) {
+      var self = this;
+      var currentLevel;
+      var storageKey = "loglevel";
+      if (name) {
+        storageKey += ":" + name;
+      }
+
+      function persistLevelIfPossible(levelNum) {
+          var levelName = (logMethods[levelNum] || 'silent').toUpperCase();
+
+          // Use localStorage if available
+          try {
+              window.localStorage[storageKey] = levelName;
+              return;
+          } catch (ignore) {}
+
+          // Use session cookie as fallback
+          try {
+              window.document.cookie =
+                encodeURIComponent(storageKey) + "=" + levelName + ";";
+          } catch (ignore) {}
+      }
+
+      function getPersistedLevel() {
+          var storedLevel;
+
+          try {
+              storedLevel = window.localStorage[storageKey];
+          } catch (ignore) {}
+
+          if (typeof storedLevel === undefinedType) {
+              try {
+                  var cookie = window.document.cookie;
+                  var location = cookie.indexOf(
+                      encodeURIComponent(storageKey) + "=");
+                  if (location) {
+                      storedLevel = /^([^;]+)/.exec(cookie.slice(location))[1];
+                  }
+              } catch (ignore) {}
+          }
+
+          // If the stored level is not valid, treat it as if nothing was stored.
+          if (self.levels[storedLevel] === undefined) {
+              storedLevel = undefined;
+          }
+
+          return storedLevel;
+      }
+
+      /*
+       *
+       * Public API
+       *
+       */
+
+      self.levels = { "TRACE": 0, "DEBUG": 1, "INFO": 2, "WARN": 3,
+          "ERROR": 4, "SILENT": 5};
+
+      self.methodFactory = factory || defaultMethodFactory;
+
+      self.getLevel = function () {
+          return currentLevel;
+      };
+
+      self.setLevel = function (level, persist) {
+          if (typeof level === "string" && self.levels[level.toUpperCase()] !== undefined) {
+              level = self.levels[level.toUpperCase()];
+          }
+          if (typeof level === "number" && level >= 0 && level <= self.levels.SILENT) {
+              currentLevel = level;
+              if (persist !== false) {  // defaults to true
+                  persistLevelIfPossible(level);
+              }
+              replaceLoggingMethods.call(self, level, name);
+              if (typeof console === undefinedType && level < self.levels.SILENT) {
+                  return "No console available for logging";
+              }
+          } else {
+              throw "log.setLevel() called with invalid level: " + level;
+          }
+      };
+
+      self.setDefaultLevel = function (level) {
+          if (!getPersistedLevel()) {
+              self.setLevel(level, false);
+          }
+      };
+
+      self.enableAll = function(persist) {
+          self.setLevel(self.levels.TRACE, persist);
+      };
+
+      self.disableAll = function(persist) {
+          self.setLevel(self.levels.SILENT, persist);
+      };
+
+      // Initialize with the right level
+      var initialLevel = getPersistedLevel();
+      if (initialLevel == null) {
+          initialLevel = defaultLevel == null ? "WARN" : defaultLevel;
+      }
+      self.setLevel(initialLevel, false);
+    }
+
+    /*
+     *
+     * Package-level API
+     *
+     */
+
+    var defaultLogger = new Logger();
+
+    var _loggersByName = {};
+    defaultLogger.getLogger = function getLogger(name) {
+        if (typeof name !== "string" || name === "") {
+          throw new TypeError("You must supply a name when creating a logger.");
+        }
+
+        var logger = _loggersByName[name];
+        if (!logger) {
+          logger = _loggersByName[name] = new Logger(
+            name, defaultLogger.getLevel(), defaultLogger.methodFactory);
+        }
+        return logger;
+    };
+
+    // Grab the current global log variable in case of overwrite
+    var _log = (typeof window !== undefinedType) ? window.log : undefined;
+    defaultLogger.noConflict = function() {
+        if (typeof window !== undefinedType &&
+               window.log === defaultLogger) {
+            window.log = _log;
+        }
+
+        return defaultLogger;
+    };
+
+    return defaultLogger;
+}));
+
+
+/***/ }),
+/* 49 */
 /***/ (function(module, exports) {
 
 /**
@@ -5089,7 +5338,7 @@ function plural(ms, n, name) {
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module, global) {var __WEBPACK_AMD_DEFINE_RESULT__;/*! https://mths.be/punycode v1.4.1 by @mathias */
@@ -5628,7 +5877,7 @@ function plural(ms, n, name) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)(module), __webpack_require__(2)))
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5719,7 +5968,7 @@ var isArray = Array.isArray || function (xs) {
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5811,18 +6060,18 @@ var objectKeys = Object.keys || function (obj) {
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-exports.decode = exports.parse = __webpack_require__(50);
-exports.encode = exports.stringify = __webpack_require__(51);
+exports.decode = exports.parse = __webpack_require__(51);
+exports.encode = exports.stringify = __webpack_require__(52);
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5867,15 +6116,15 @@ module.exports = function required(port, protocol) {
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
-var transportList = __webpack_require__(63);
+var transportList = __webpack_require__(64);
 
-module.exports = __webpack_require__(61)(transportList);
+module.exports = __webpack_require__(62)(transportList);
 
 // TODO can't get rid of this until all servers do
 if ('_sockjs_onload' in global) {
@@ -5885,7 +6134,7 @@ if ('_sockjs_onload' in global) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5909,7 +6158,7 @@ module.exports = CloseEvent;
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5931,7 +6180,7 @@ module.exports = TransportMessageEvent;
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5965,7 +6214,7 @@ module.exports = FacadeJS;
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5974,7 +6223,7 @@ module.exports = FacadeJS;
 var urlUtils = __webpack_require__(5)
   , eventUtils = __webpack_require__(7)
   , JSON3 = __webpack_require__(6)
-  , FacadeJS = __webpack_require__(57)
+  , FacadeJS = __webpack_require__(58)
   , InfoIframeReceiver = __webpack_require__(22)
   , iframeUtils = __webpack_require__(12)
   , loc = __webpack_require__(23)
@@ -6075,7 +6324,7 @@ module.exports = function(SockJS, availableTransports) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6152,7 +6401,7 @@ module.exports = InfoIframe;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6164,8 +6413,8 @@ var EventEmitter = __webpack_require__(4).EventEmitter
   , XDR = __webpack_require__(17)
   , XHRCors = __webpack_require__(14)
   , XHRLocal = __webpack_require__(10)
-  , XHRFake = __webpack_require__(72)
-  , InfoIframe = __webpack_require__(59)
+  , XHRFake = __webpack_require__(73)
+  , InfoIframe = __webpack_require__(60)
   , InfoAjax = __webpack_require__(21)
   ;
 
@@ -6249,31 +6498,31 @@ module.exports = InfoReceiver;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process, global) {
 
-__webpack_require__(62);
+__webpack_require__(63);
 
 var URL = __webpack_require__(33)
   , inherits = __webpack_require__(0)
   , JSON3 = __webpack_require__(6)
   , random = __webpack_require__(9)
-  , escape = __webpack_require__(77)
+  , escape = __webpack_require__(78)
   , urlUtils = __webpack_require__(5)
   , eventUtils = __webpack_require__(7)
-  , transport = __webpack_require__(79)
+  , transport = __webpack_require__(80)
   , objectUtils = __webpack_require__(18)
   , browser = __webpack_require__(11)
-  , log = __webpack_require__(78)
+  , log = __webpack_require__(79)
   , Event = __webpack_require__(15)
   , EventTarget = __webpack_require__(20)
   , loc = __webpack_require__(23)
-  , CloseEvent = __webpack_require__(55)
-  , TransportMessageEvent = __webpack_require__(56)
-  , InfoReceiver = __webpack_require__(60)
+  , CloseEvent = __webpack_require__(56)
+  , TransportMessageEvent = __webpack_require__(57)
+  , InfoReceiver = __webpack_require__(61)
   ;
 
 var debug = function() {};
@@ -6631,14 +6880,14 @@ SockJS.prototype.countRTO = function(rtt) {
 
 module.exports = function(availableTransports) {
   transports = transport(availableTransports);
-  __webpack_require__(58)(SockJS, availableTransports);
+  __webpack_require__(59)(SockJS, availableTransports);
   return SockJS;
 };
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7097,7 +7346,7 @@ defineProperties(StringPrototype, {
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7105,8 +7354,8 @@ defineProperties(StringPrototype, {
 
 module.exports = [
   // streaming transports
-  __webpack_require__(73)
-, __webpack_require__(75)
+  __webpack_require__(74)
+, __webpack_require__(76)
 , __webpack_require__(30)
 , __webpack_require__(26)
 , __webpack_require__(16)(__webpack_require__(26))
@@ -7115,14 +7364,14 @@ module.exports = [
 , __webpack_require__(27)
 , __webpack_require__(16)(__webpack_require__(27))
 , __webpack_require__(31)
-, __webpack_require__(74)
+, __webpack_require__(75)
 , __webpack_require__(16)(__webpack_require__(31))
-, __webpack_require__(65)
+, __webpack_require__(66)
 ];
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7140,7 +7389,7 @@ if (Driver) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7156,8 +7405,8 @@ if (Driver) {
 
 var inherits = __webpack_require__(0)
   , SenderReceiver = __webpack_require__(29)
-  , JsonpReceiver = __webpack_require__(70)
-  , jsonpSender = __webpack_require__(71)
+  , JsonpReceiver = __webpack_require__(71)
+  , jsonpSender = __webpack_require__(72)
   ;
 
 function JsonPTransport(transUrl) {
@@ -7182,7 +7431,7 @@ module.exports = JsonPTransport;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7277,7 +7526,7 @@ module.exports = BufferedSender;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7342,7 +7591,7 @@ module.exports = Polling;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7413,7 +7662,7 @@ module.exports = EventSourceReceiver;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7508,7 +7757,7 @@ module.exports = HtmlfileReceiver;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7699,7 +7948,7 @@ module.exports = JsonpReceiver;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7806,7 +8055,7 @@ module.exports = function(url, payload, callback) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7837,7 +8086,7 @@ module.exports = XHRFake;
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7847,7 +8096,7 @@ var utils = __webpack_require__(7)
   , urlUtils = __webpack_require__(5)
   , inherits = __webpack_require__(0)
   , EventEmitter = __webpack_require__(4).EventEmitter
-  , WebsocketDriver = __webpack_require__(64)
+  , WebsocketDriver = __webpack_require__(65)
   ;
 
 var debug = function() {};
@@ -7944,7 +8193,7 @@ module.exports = WebSocketTransport;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7974,7 +8223,7 @@ module.exports = XdrPollingTransport;
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8023,7 +8272,7 @@ module.exports = XhrStreamingTransport;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8048,7 +8297,7 @@ if (global.crypto && global.crypto.getRandomValues) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8105,7 +8354,7 @@ module.exports = {
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8131,7 +8380,7 @@ module.exports = logObject;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8189,7 +8438,7 @@ module.exports = function(availableTransports) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8202,7 +8451,7 @@ module.exports = function (str) {
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8281,7 +8530,7 @@ exports.parse = querystring;
 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8308,8 +8557,8 @@ exports.parse = querystring;
 
 
 
-var punycode = __webpack_require__(49);
-var util = __webpack_require__(83);
+var punycode = __webpack_require__(50);
+var util = __webpack_require__(84);
 
 exports.parse = urlParse;
 exports.resolve = urlResolve;
@@ -8384,7 +8633,7 @@ var protocolPattern = /^([a-z0-9.+-]+:)/i,
       'gopher:': true,
       'file:': true
     },
-    querystring = __webpack_require__(52);
+    querystring = __webpack_require__(53);
 
 function urlParse(url, parseQueryString, slashesDenoteHost) {
   if (url && util.isObject(url) && url instanceof Url) return url;
@@ -9020,7 +9269,7 @@ Url.prototype.parseHost = function() {
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9043,7 +9292,7 @@ module.exports = {
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // The error overlay is inspired (and mostly copied) from Create React App (https://github.com/facebookincubator/create-react-app)
@@ -9175,10 +9424,10 @@ exports.showMessage = function handleMessage(messages) {
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var SockJS = __webpack_require__(54);
+var SockJS = __webpack_require__(55);
 
 var retries = 0;
 var sock = null;
@@ -9222,7 +9471,7 @@ module.exports = socket;
 
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
@@ -9231,7 +9480,19 @@ module.exports = __webpack_amd_options__;
 /* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ }),
-/* 87 */
+/* 88 */
+/***/ (function(module, exports) {
+
+function webpackEmptyContext(req) {
+	throw new Error("Cannot find module '" + req + "'.");
+}
+webpackEmptyContext.keys = function() { return []; };
+webpackEmptyContext.resolve = webpackEmptyContext;
+module.exports = webpackEmptyContext;
+webpackEmptyContext.id = 88;
+
+/***/ }),
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var EventEmitter = __webpack_require__(42);
@@ -9239,7 +9500,7 @@ module.exports = new EventEmitter();
 
 
 /***/ }),
-/* 88 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(35);

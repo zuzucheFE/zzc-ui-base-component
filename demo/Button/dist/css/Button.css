@@ -85,11 +85,11 @@ button {
   .zzc-btn.zzc-btn-ms {
     height: .7rem;
     line-height: .7rem;
-    font-size: 0.32rem; }
+    font-size: 0.28rem; }
   .zzc-btn.zzc-btn-xs {
     height: .6rem;
     line-height: .6rem;
-    font-size: 0.28rem;
+    font-size: 0.24rem;
     border: none;
     position: relative; }
     .zzc-btn.zzc-btn-xs::after {

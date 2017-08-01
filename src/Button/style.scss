@@ -66,12 +66,12 @@ $default_border_color: #ccc;
     &#{$uiName}-btn-ms {
         height: .7rem;
         line-height: .7rem;
-        font-size: $fs32rem;
+        font-size: $fs28rem;
     }
     &#{$uiName}-btn-xs {
         height: .6rem;
         line-height: .6rem;
-        font-size: $fs28rem;
+        font-size: $fs24rem;
         @include halfPXBorder($default_border_color, .16rem);
     }
 }
