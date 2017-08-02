@@ -30,7 +30,12 @@
 
 //正常像素
 @mixin pxBorder($borderColor:#333, $borderRadius:0, $borderWidth:1px, $borderStyle:solid) {
-    border: $borderWidth $borderStyle $borderColor;
+    @if($borderColor=='none') {
+        border: none;
+    }
+    @else{
+        border: $borderWidth $borderStyle $borderColor;
+    }
 }
 
 //居中

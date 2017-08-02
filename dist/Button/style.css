@@ -110,7 +110,8 @@ button {
       background: transparent; }
   .zzc-btn.zzc-btn-main {
     background: #4E7CDD;
-    color: #fff; }
+    color: #fff;
+    border: none; }
     .zzc-btn.zzc-btn-main::after {
       display: none; }
     .zzc-btn.zzc-btn-main.zzc-btn-disabled {
@@ -146,7 +147,8 @@ button {
           background: transparent; }
   .zzc-btn.zzc-btn-main-lh {
     background: #86ABFF;
-    color: #fff; }
+    color: #fff;
+    border: none; }
     .zzc-btn.zzc-btn-main-lh::after {
       display: none; }
     .zzc-btn.zzc-btn-main-lh.zzc-btn-disabled {
@@ -182,7 +184,8 @@ button {
           background: transparent; }
   .zzc-btn.zzc-btn-main-dk {
     background: #254FCB;
-    color: #fff; }
+    color: #fff;
+    border: none; }
     .zzc-btn.zzc-btn-main-dk::after {
       display: none; }
     .zzc-btn.zzc-btn-main-dk.zzc-btn-disabled {
@@ -218,7 +221,8 @@ button {
           background: transparent; }
   .zzc-btn.zzc-btn-sub {
     background: #F40256;
-    color: #fff; }
+    color: #fff;
+    border: none; }
     .zzc-btn.zzc-btn-sub::after {
       display: none; }
     .zzc-btn.zzc-btn-sub.zzc-btn-disabled {
@@ -254,7 +258,8 @@ button {
           background: transparent; }
   .zzc-btn.zzc-btn-sub-lh {
     background: #FF5A82;
-    color: #fff; }
+    color: #fff;
+    border: none; }
     .zzc-btn.zzc-btn-sub-lh::after {
       display: none; }
     .zzc-btn.zzc-btn-sub-lh.zzc-btn-disabled {
@@ -290,7 +295,8 @@ button {
           background: transparent; }
   .zzc-btn.zzc-btn-sub-dk {
     background: #CC0033;
-    color: #fff; }
+    color: #fff;
+    border: none; }
     .zzc-btn.zzc-btn-sub-dk::after {
       display: none; }
     .zzc-btn.zzc-btn-sub-dk.zzc-btn-disabled {
