@@ -52,6 +52,78 @@ button {
   background: transparent;
   outline: 0; }
 
+.c_fff {
+  color: #fff; }
+
+.c_ccc {
+  color: #ccc; }
+
+.c_333 {
+  color: #333; }
+
+.c_666 {
+  color: #666; }
+
+.c_999 {
+  color: #999; }
+
+.c_000 {
+  color: #000; }
+
+.c_main {
+  color: #4E7CDD; }
+
+.c_main_lh {
+  color: #86ABFF; }
+
+.c_main_dk {
+  color: #254FCB; }
+
+.c_sub {
+  color: #F40256; }
+
+.c_sub_lh {
+  color: #FF5A82; }
+
+.c_sub_dk {
+  color: #CC0033; }
+
+.c_succee {
+  color: #22BF66; }
+
+.c_succee_lh {
+  color: #65F395; }
+
+.c_succee_dk {
+  color: #008D3A; }
+
+.c_warn {
+  color: #F5A300; }
+
+.c_warn_lh {
+  color: #FFD449; }
+
+.c_warn_dk {
+  color: #BD7400; }
+
+.c_error {
+  color: #F34B3C; }
+
+.c_error_lh {
+  color: #FF7F68; }
+
+.c_error_dk {
+  color: #B90013; }
+
+.c_link {
+  color: #20ABD9; }
+
+.c_link_lh {
+  color: #69DDFF; }
+
+.c_link_dk {
+  color: #007CA7; }
+
 .zzc-btn {
   cursor: pointer;
   margin-bottom: 0;
@@ -437,6 +509,217 @@ button {
     opacity: .5;
     pointer-events: none;
     cursor: not-allowed; }
+@charset "UTF-8";
+/**
+  * Created by Robin Hsu on 16/6/24.
+  * 统一浏览器样式，请不要将无关的代码放到这里
+  * 只要不是相关功能代码，写在这里即使上线也一律回退
+  * Last edited by Robin Hsu on 16/8/5.
+  */
+* {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -user-select: none; }
+
+html, body, div, h1, h2, h3, h4, h5, span, p, em, img, dl, dt, dd, ol, ul, li, form, label, nav, footer, header, section, time, button, input, select, textarea {
+  border: 0 none;
+  margin: 0;
+  padding: 0; }
+
+h1, h2, h3, h4 {
+  font-weight: normal; }
+
+input, textarea {
+  border-radius: 0;
+  outline: medium none;
+  -webkit-user-select: auto;
+  -moz-user-select: auto;
+   -ms-user-select: auto;
+       user-select: auto; }
+
+input:disabled, textarea:disabled {
+  opacity: 1; }
+
+button, input, select, textarea {
+  resize: none; }
+
+s, i, em, b, strong {
+  font-style: normal;
+  text-decoration: none; }
+
+img {
+  border: none; }
+
+ul, ol {
+  list-style: outside none none; }
+
+li {
+  list-style: none outside none; }
+
+button {
+  background: transparent;
+  outline: 0; }
+
+.c_fff {
+  color: #fff; }
+
+.c_ccc {
+  color: #ccc; }
+
+.c_333 {
+  color: #333; }
+
+.c_666 {
+  color: #666; }
+
+.c_999 {
+  color: #999; }
+
+.c_000 {
+  color: #000; }
+
+.c_main {
+  color: #4E7CDD; }
+
+.c_main_lh {
+  color: #86ABFF; }
+
+.c_main_dk {
+  color: #254FCB; }
+
+.c_sub {
+  color: #F40256; }
+
+.c_sub_lh {
+  color: #FF5A82; }
+
+.c_sub_dk {
+  color: #CC0033; }
+
+.c_succee {
+  color: #22BF66; }
+
+.c_succee_lh {
+  color: #65F395; }
+
+.c_succee_dk {
+  color: #008D3A; }
+
+.c_warn {
+  color: #F5A300; }
+
+.c_warn_lh {
+  color: #FFD449; }
+
+.c_warn_dk {
+  color: #BD7400; }
+
+.c_error {
+  color: #F34B3C; }
+
+.c_error_lh {
+  color: #FF7F68; }
+
+.c_error_dk {
+  color: #B90013; }
+
+.c_link {
+  color: #20ABD9; }
+
+.c_link_lh {
+  color: #69DDFF; }
+
+.c_link_dk {
+  color: #007CA7; }
+
+.zzc-card {
+  background: #fff;
+  width: 100%;
+  border-radius: 0.16rem;
+  -webkit-border-radius: 0.16rem;
+  -webkit-box-shadow: 0 0.04rem 0.12rem rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0.04rem 0.12rem rgba(0, 0, 0, 0.15); }
+  .zzc-card .zzc-card-head {
+    padding: .26rem .3rem;
+    height: 1rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    position: relative; }
+    .zzc-card .zzc-card-head::after {
+      content: "";
+      position: absolute;
+      display: block;
+      z-index: 11;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      border-bottom: 1px solid #DDE0E6;
+      -webkit-transform: scaleY(0.5) translateY(50%);
+              transform: scaleY(0.5) translateY(50%); }
+    .zzc-card .zzc-card-head .zzc-card-head-box {
+      display: -webkit-box;
+      -webkit-box-align: center;
+      -webkit-box-pack: center;
+      height: 100%;
+      width: 100%;
+      position: relative; }
+      .zzc-card .zzc-card-head .zzc-card-head-box .zzc-card-title {
+        color: #333;
+        font-size: 0.32rem;
+        width: 100%;
+        -webkit-box-flex: 1; }
+        .zzc-card .zzc-card-head .zzc-card-head-box .zzc-card-title.zzc-title-center {
+          text-align: center; }
+        .zzc-card .zzc-card-head .zzc-card-head-box .zzc-card-title.zzc-title-left {
+          text-align: left; }
+        .zzc-card .zzc-card-head .zzc-card-head-box .zzc-card-title.zzc-title-right {
+          text-align: right; }
+      .zzc-card .zzc-card-head .zzc-card-head-box .zzc-card-title-extra {
+        font-size: 0.28rem;
+        color: #999; }
+  .zzc-card .zzc-card-content {
+    padding: .3rem; }
+  .zzc-card .zzc-card-btn-group {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    position: relative;
+    border-bottom-left-radius: .16rem;
+    border-bottom-right-radius: .16rem;
+    overflow: hidden; }
+    .zzc-card .zzc-card-btn-group::after {
+      content: "";
+      position: absolute;
+      display: block;
+      z-index: 11;
+      width: 100%;
+      top: 0;
+      left: 0;
+      border-top: 1px solid #DDE0E6;
+      -webkit-transform: scaleY(0.5) translateY(-50%);
+              transform: scaleY(0.5) translateY(-50%); }
+    .zzc-card .zzc-card-btn-group [class^="zzc-btn"] {
+      width: 100%;
+      -webkit-box-flex: 1;
+      border: none; }
+      .zzc-card .zzc-card-btn-group [class^="zzc-btn"]:after {
+        display: none; }
+      .zzc-card .zzc-card-btn-group [class^="zzc-btn"]:not(:first-child) {
+        position: relative; }
+        .zzc-card .zzc-card-btn-group [class^="zzc-btn"]:not(:first-child)::after {
+          content: "";
+          position: absolute;
+          display: block;
+          z-index: 11;
+          top: 0;
+          left: 0;
+          height: 100%;
+          border-left: 1px solid #DDE0E6;
+          -webkit-transform: scaleX(0.5) translateX(-50%);
+                  transform: scaleX(0.5) translateX(-50%); }
 #root .item h5 {
   padding: .3rem .3rem;
   font-size: .36rem; }
