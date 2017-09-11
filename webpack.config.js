@@ -12,28 +12,32 @@ const webpack = require( 'webpack' );
 const process = require( 'process' );
 
 const extractSass = new ExtractTextPlugin( {
-    filename: "[name]/dist/css/[name].css",
+    filename: "./demo/[name]/dist/css/[name].css",
 } );
 
 module.exports = {
     devtool: 'source-map',
     entry: {
         Button: [
-            path.resolve( __dirname, './Button/src/index.js' ),
+            path.resolve( __dirname, './demo/Button/src/index.js' ),
+            'webpack-dev-server/client?http://localhost:9000/',
+        ],
+        Card: [
+            path.resolve( __dirname, './demo/Card/src/index.js' ),
             'webpack-dev-server/client?http://localhost:9000/',
         ],
     },
 
     output: {
         path: path.resolve( __dirname ),
-        filename: "[name]/dist/js/[name].js"
+        filename: "./demo/[name]/dist/js/[name].js"
     },
 
     devServer: {
         contentBase: path.join( __dirname ),
         compress: true,
         port: 9000,
-        inline:true
+        inline: true
     },
 
     module: {
@@ -54,7 +58,9 @@ module.exports = {
                     use: [{
                         loader: "css-loader"
                     }, {
-                        loader: "sass-loader"
+                        loader: 'postcss-loader'
+                    }, {
+                        loader: "sass-loader",
                     }],
                     // use style-loader in development
                     fallback: "style-loader"
@@ -63,9 +69,16 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: extractSass.extract( {
-                    use: [{
-                        loader: "css-loader"
-                    }],
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                importLoaders: 1,
+                            }
+                        },
+                        {
+                            loader: 'postcss-loader'
+                        }],
                     // use style-loader in development
                     fallback: "style-loader"
                 } )
@@ -80,10 +93,10 @@ module.exports = {
         alias: {
             "zzc-base-component": path.resolve(
                 __dirname,
-                "../dist/"
+                "./src/"
             )
         }
     },
 
-    
+
 }

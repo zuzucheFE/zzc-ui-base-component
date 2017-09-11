@@ -4,8 +4,8 @@
   "description": "zzc-ui基础组件库",
   "main": "./dist/index.js",
   "scripts": {
-    "demo": "webpack -w --config ./demo/webpack.config.js",
-    "server": "webpack-dev-server --config ./demo/webpack.config.js --inline",
+    "demo": "webpack -w --config ./webpack.config.js",
+    "server": "webpack-dev-server --config ./webpack.config.js --inline",
     "compile": "gulp compile",
     "watch": "gulp watch"
   },
@@ -29,6 +29,7 @@
     "conponent"
   ],
   "devDependencies": {
+    "autoprefixer": "^7.1.4",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.5.2",
@@ -45,6 +46,8 @@
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^2.1.2",
     "node-sass": "^4.5.3",
+    "postcss": "^6.0.11",
+    "postcss-loader": "^2.0.6",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "through2": "^2.0.3",

@@ -1,0 +1,61 @@
+@import '../base/base.scss';
+.zzc-card {
+    background: $c_fff;
+    width: 100%;
+    @include borderRadius(.16rem);
+    box-shadow: 0 .04rem .12rem rgba(0, 0, 0, .15);
+    .zzc-card-head {
+        padding: .26rem .3rem;
+        height: 1rem;
+        box-sizing: border-box;
+        @include halfPXLine('bottom', $border_color);
+
+        .zzc-card-head-box {
+            @include -webkit-box();
+            height: 100%;
+            width: 100%;
+            position: relative;
+            .zzc-card-title {
+                color: $c_333;
+                font-size: $fs32rem;
+                width: 100%;
+                -webkit-box-flex: 1;
+                &.zzc-title-center{
+                    text-align: center;
+                }
+                &.zzc-title-left{
+                    text-align: left;
+                }
+                &.zzc-title-right{
+                    text-align: right;
+                }
+            }
+            .zzc-card-title-extra{
+                font-size: $fs28rem;
+                color:$c_999;
+            }
+        }
+    }
+    .zzc-card-content{
+        padding: .3rem;
+    }
+    .zzc-card-btn-group{
+        @include -webkit-box();
+        @include halfPXLine('top', $border_color);
+        border-bottom-left-radius: .16rem;
+        border-bottom-right-radius: .16rem;
+        overflow: hidden;
+        [class^="zzc-btn"]{
+            width: 100%;
+            -webkit-box-flex: 1;
+            border:none;
+            &:after{
+                display: none;
+            }
+            &:not(:first-child){
+                @include halfPXLine('left', $border_color);
+            }
+            
+        }
+    }
+}

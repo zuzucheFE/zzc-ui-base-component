@@ -28,6 +28,45 @@
     }
 }
 
+//半像素线
+@mixin halfPXLine($type,$borderColor:#333, $borderWidth:1px, $borderStyle:solid) {
+    position: relative;
+    &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        z-index: 11;
+        @if($type == 'top'){
+            width: 100%;
+            top: 0;
+            left: 0;
+            border-top: $borderWidth $borderStyle $borderColor;
+            transform: scaleY(.5) translateY(-50%);
+        }
+        @else if($type == 'left'){
+            top: 0;
+            left: 0;
+            height: 100%;
+            border-left: $borderWidth $borderStyle $borderColor;
+            transform: scaleX(.5) translateX(-50%);
+        }
+        @else if($type == 'bottom'){
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            border-bottom: $borderWidth $borderStyle $borderColor;
+            transform: scaleY(.5) translateY(50%);
+        }
+        @else if($type == 'right'){
+            top: 0;
+            right: 0;
+            height: 100%;
+            transform: scaleX(.5) translateX(50%);
+            border-right: $borderWidth $borderStyle $borderColor;
+        }
+    }
+}
+
 //正常像素
 @mixin pxBorder($borderColor:#333, $borderRadius:0, $borderWidth:1px, $borderStyle:solid) {
     @if($borderColor=='none') {

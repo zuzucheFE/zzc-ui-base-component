@@ -2,40 +2,111 @@
 
 //字体基本颜色
 $c_fff: #fff;
+.c_fff{
+    color:$c_fff;
+} 
 $c_ccc: #ccc;
+.c_ccc{
+    color:$c_ccc;
+} 
 $c_333: #333;
+.c_333{
+    color:$c_333;
+} 
 $c_666: #666;
+.c_666{
+    color:$c_666;
+} 
 $c_999: #999;
+.c_999{
+    color:$c_999;
+} 
 $c_000: #000;
+.c_000{
+    color:$c_000;
+} 
 
 //分割线颜色
 $border_color: #DDE0E6;
-
 //背景颜色
 $bg_color: #F0F1F3;
 
 //主题颜色
 $main: #4E7CDD;
+.c_main{
+    color:$main;
+} 
 $main_lh: #86ABFF;
+.c_main_lh{
+    color:$main_lh;
+} 
 $main_dk: #254FCB;
+.c_main_dk{
+    color:$main_dk;
+} 
 
 $sub: #F40256;
+.c_sub{
+    color:$sub;
+} 
 $sub_lh: #FF5A82;
+.c_sub_lh{
+    color:$sub_lh;
+} 
 $sub_dk: #CC0033;
+.c_sub_dk{
+    color:$sub_dk;
+} 
 
 //功能颜色
 $succee: #22BF66;
+.c_succee{
+    color:$succee;
+}
 $succee_lh: #65F395;
+.c_succee_lh{
+    color:$succee_lh;
+}
 $succee_dk: #008D3A;
+.c_succee_dk{
+    color:$succee_dk;
+}
 
 $warn: #F5A300;
+.c_warn{
+    color:$warn;
+}
 $warn_lh: #FFD449;
+.c_warn_lh{
+    color:$warn_lh;
+}
 $warn_dk: #BD7400;
+.c_warn_dk{
+    color:$warn_dk;
+}
 
 $error: #F34B3C;
+.c_error{
+    color:$error;
+}
 $error_lh: #FF7F68;
+.c_error_lh{
+    color:$error_lh;
+}
 $error_dk: #B90013;
+.c_error_dk{
+    color:$error_dk;
+}
 
 $link: #20ABD9;
+.c_link{
+    color:$link;
+}
 $link_lh: #69DDFF;
+.c_link_lh{
+    color:$link_lh;
+}
 $link_dk: #007CA7;
+.c_link_dk{
+    color:$link_dk;
+}

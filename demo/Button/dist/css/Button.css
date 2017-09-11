@@ -25,7 +25,9 @@ input, textarea {
   border-radius: 0;
   outline: medium none;
   -webkit-user-select: auto;
-  user-select: auto; }
+  -moz-user-select: auto;
+   -ms-user-select: auto;
+       user-select: auto; }
 
 input:disabled, textarea:disabled {
   opacity: 1; }
@@ -64,10 +66,12 @@ button {
   -ms-user-select: none;
   user-select: none;
   background-image: none;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0 .2rem;
   font-weight: 400;
   display: inline-block;
+  -webkit-transition: background .1s;
   transition: background .1s;
   border-radius: .08rem;
   background: transparent;
@@ -106,11 +110,13 @@ button {
       transform-origin: 0 0;
       -webkit-transform: scale(0.5, 0.5);
       transform: scale(0.5, 0.5);
-      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
       background: transparent; }
   .zzc-btn.zzc-btn-main {
     background: #4E7CDD;
-    color: #fff; }
+    color: #fff;
+    border: none; }
     .zzc-btn.zzc-btn-main::after {
       display: none; }
     .zzc-btn.zzc-btn-main.zzc-btn-disabled {
@@ -142,11 +148,13 @@ button {
           transform-origin: 0 0;
           -webkit-transform: scale(0.5, 0.5);
           transform: scale(0.5, 0.5);
-          box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+                  box-sizing: border-box;
           background: transparent; }
   .zzc-btn.zzc-btn-main-lh {
     background: #86ABFF;
-    color: #fff; }
+    color: #fff;
+    border: none; }
     .zzc-btn.zzc-btn-main-lh::after {
       display: none; }
     .zzc-btn.zzc-btn-main-lh.zzc-btn-disabled {
@@ -178,11 +186,13 @@ button {
           transform-origin: 0 0;
           -webkit-transform: scale(0.5, 0.5);
           transform: scale(0.5, 0.5);
-          box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+                  box-sizing: border-box;
           background: transparent; }
   .zzc-btn.zzc-btn-main-dk {
     background: #254FCB;
-    color: #fff; }
+    color: #fff;
+    border: none; }
     .zzc-btn.zzc-btn-main-dk::after {
       display: none; }
     .zzc-btn.zzc-btn-main-dk.zzc-btn-disabled {
@@ -214,11 +224,13 @@ button {
           transform-origin: 0 0;
           -webkit-transform: scale(0.5, 0.5);
           transform: scale(0.5, 0.5);
-          box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+                  box-sizing: border-box;
           background: transparent; }
   .zzc-btn.zzc-btn-sub {
     background: #F40256;
-    color: #fff; }
+    color: #fff;
+    border: none; }
     .zzc-btn.zzc-btn-sub::after {
       display: none; }
     .zzc-btn.zzc-btn-sub.zzc-btn-disabled {
@@ -250,11 +262,13 @@ button {
           transform-origin: 0 0;
           -webkit-transform: scale(0.5, 0.5);
           transform: scale(0.5, 0.5);
-          box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+                  box-sizing: border-box;
           background: transparent; }
   .zzc-btn.zzc-btn-sub-lh {
     background: #FF5A82;
-    color: #fff; }
+    color: #fff;
+    border: none; }
     .zzc-btn.zzc-btn-sub-lh::after {
       display: none; }
     .zzc-btn.zzc-btn-sub-lh.zzc-btn-disabled {
@@ -286,11 +300,13 @@ button {
           transform-origin: 0 0;
           -webkit-transform: scale(0.5, 0.5);
           transform: scale(0.5, 0.5);
-          box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+                  box-sizing: border-box;
           background: transparent; }
   .zzc-btn.zzc-btn-sub-dk {
     background: #CC0033;
-    color: #fff; }
+    color: #fff;
+    border: none; }
     .zzc-btn.zzc-btn-sub-dk::after {
       display: none; }
     .zzc-btn.zzc-btn-sub-dk.zzc-btn-disabled {
@@ -322,7 +338,8 @@ button {
           transform-origin: 0 0;
           -webkit-transform: scale(0.5, 0.5);
           transform: scale(0.5, 0.5);
-          box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+                  box-sizing: border-box;
           background: transparent; }
   .zzc-btn.zzc-btn-noRadius {
     border-radius: 0;
@@ -349,10 +366,12 @@ button {
   -ms-user-select: none;
   user-select: none;
   background-image: none;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0 .2rem;
   font-weight: 400;
   display: inline-block;
+  -webkit-transition: background .1s;
   transition: background .1s;
   border-radius: .08rem;
   background: transparent;
